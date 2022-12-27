@@ -5,6 +5,7 @@ import { Produit } from 'src/app/models/produit';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +25,10 @@ export class ProduitServiceService {
     return this.httpClient.post<Produit>(`${this.apiServerUrl}/produit/add`, produit)
   }
   updateAllProduit(produit : Produit) : Observable <Produit> {
-    return this.httpClient.put<Produit>(`${this.apiServerUrl}/produits/update`, produit)
+    return this.httpClient.put<Produit>(`${this.apiServerUrl}/produit/update`, produit)
+  }
+  updateProduit(produit :Produit) : Observable <Produit>{
+    return this.httpClient.patch<Produit>(`${this.apiServerUrl}/produit/update`, produit)
   }
   deleteProduit(produitId : number) : Observable <void>{
     return this.httpClient.delete<void>(`${this.apiServerUrl}/produit/delete/${produitId}`)
