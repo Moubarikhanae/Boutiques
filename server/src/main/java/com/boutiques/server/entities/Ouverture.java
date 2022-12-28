@@ -22,4 +22,7 @@ public class Ouverture {
     @Getter
     @Setter
     private Time horaireFermeture;
+
+    public Ouverture() {
+    }
 }
