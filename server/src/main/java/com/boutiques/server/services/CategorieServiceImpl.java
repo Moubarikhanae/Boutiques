@@ -38,6 +38,10 @@ public class CategorieServiceImpl implements ICategorieService {
     public void updateCategory(Categorie categorie) {
         categorieRepository.save(categorie);
     }
+    @Override
+    public void deleteCategory(Categorie categorie) {
 
+        categorieRepository.delete(categorie);
+    }
 
 }
