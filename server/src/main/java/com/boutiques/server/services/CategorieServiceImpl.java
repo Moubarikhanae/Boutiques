@@ -28,4 +28,16 @@ public class CategorieServiceImpl implements ICategorieService {
     public Optional<Categorie> findCategorieByName(String name) {
         return categorieRepository.findCategorieByNom(name);
     }
+
+    @Override
+    public Optional<Categorie> findCategorieById(Long id) {
+        return categorieRepository.findCategorieById(id);
+    }
+
+    @Override
+    public void updateCategory(Categorie categorie) {
+        categorieRepository.save(categorie);
+    }
+
+
 }
