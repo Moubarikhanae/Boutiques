@@ -9,5 +9,6 @@ public interface ICategorieService {
     Optional<Categorie> findCategorieByName(String name);
     Optional<Categorie> findCategorieById(Long id);
     void updateCategory(Categorie categorie);
+    void deleteCategory(Categorie categorie);
 
 }

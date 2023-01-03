@@ -62,6 +62,19 @@ public class CategorieController {
     }
 
 
+    @Operation(summary = "La suppression d'une catégorie", description = "Cette méthode permet de supprimer une catégorie")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "No content"),
+            @ApiResponse(responseCode = "404", description = "Not found"),
+            @ApiResponse(responseCode = "400", description = "BadRequest")})
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> deleteCategory(@PathVariable Long id) {
+        Categorie categorie = categorieService.findCategorieById(id)
+                .orElseThrow(()-> new BoutiqueException("La catégorie n'existe pas."));
+        categorieService.deleteCategory(categorie);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 
 
 
