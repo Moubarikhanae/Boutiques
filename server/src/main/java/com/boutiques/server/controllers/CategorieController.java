@@ -30,8 +30,6 @@ public class CategorieController {
 
     private ICategorieService categorieService;
 
-    private CategorieMapper categorieMapper;
-
     @Operation(summary = "La création d'une catégorie", description = "Cette méthode crée une nouvelle catégorie")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "successful operation"),
