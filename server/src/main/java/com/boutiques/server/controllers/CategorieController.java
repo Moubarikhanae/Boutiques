@@ -11,6 +11,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,7 @@ import java.util.Map;
 @Tag(name = "Catégorie", description = "La gestion des catégories")
 public class CategorieController {
 
+    private final Logger logger = LoggerFactory.getLogger(CategorieController.class);
 
     private ICategorieService categorieService;
 
@@ -35,15 +38,7 @@ public class CategorieController {
             @ApiResponse(responseCode = "400", description = "BadRequest")})
     @PostMapping("/save-categorie")
     public ResponseEntity<CategorieCreationDTO> createCategory(@RequestBody @Valid CategorieCreationDTO categorieCreationDTO) {
-
-        //tester si le nom existe déjà, afin de respecter son unicité
-        if (categorieService.findCategorieByName(categorieCreationDTO.getNom()).isPresent()) {
-            throw new BoutiqueException("La catégorie avec le nom" + categorieCreationDTO.getNom() + " existe déjà");
-        }
-
-        Categorie categorie = categorieMapper.categorieCreationDtoToCategorie(categorieCreationDTO);
-        categorieService.createCategory(categorie);
-
+        categorieService.createCategory(categorieCreationDTO);
         return new ResponseEntity<>(categorieCreationDTO, HttpStatus.OK);
     }
 
@@ -54,13 +49,9 @@ public class CategorieController {
             @ApiResponse(responseCode = "400", description = "BadRequest")})
     @PutMapping("/{id}")
     public ResponseEntity<CategorieCreationDTO> updateCategory(@PathVariable Long id, @RequestBody @Valid CategorieCreationDTO categorieCreationDTO) {
-        Categorie categorie = categorieService.findCategorieById(id)
-                .orElseThrow(()-> new BoutiqueException("La catégorie n'existe pas."));
-        categorie.setNom(categorieCreationDTO.getNom());
-        categorieService.updateCategory(categorie);
+        categorieService.updateCategory(id, categorieCreationDTO);
         return new ResponseEntity<>(categorieCreationDTO,HttpStatus.OK);
     }
-
 
     @Operation(summary = "La suppression d'une catégorie", description = "Cette méthode permet de supprimer une catégorie")
     @ApiResponses(value = {
@@ -69,13 +60,16 @@ public class CategorieController {
             @ApiResponse(responseCode = "400", description = "BadRequest")})
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Object>> deleteCategory(@PathVariable Long id) {
-        Categorie categorie = categorieService.findCategorieById(id)
-                .orElseThrow(()-> new BoutiqueException("La catégorie n'existe pas."));
-        categorieService.deleteCategory(categorie);
+
+        categorieService.deleteCategory(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-
-
-
+    @Operation(summary = "La liste des categories", description = "Cette méthode permet de lister les catégories")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation")})
+    @GetMapping()
+    public ResponseEntity<?> getAllPosts() {
+        return new ResponseEntity<>(categorieService.retreiveCategories(),HttpStatus.OK);
+    }
 }
