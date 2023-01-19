@@ -43,7 +43,7 @@ public class CategorieServiceImpl implements ICategorieService {
         Categorie categorie = categorieMapper.categorieCreationDtoToCategorie(categorieCreationDTO);
         Categorie categorieCreated = categorieRepository.save(categorie);
         logger.info("La catégorie" +categorieCreated.getNom()+ " est créée avec succès.");
-          return categorieCreated;
+        return categorieCreated;
     }
 
     @Override
