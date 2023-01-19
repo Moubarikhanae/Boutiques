@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/boutiques")
@@ -45,8 +46,20 @@ public class BoutiqueController {
             @ApiResponse(responseCode = "404", description = "Not found"),
             @ApiResponse(responseCode = "400", description = "BadRequest")})
     @PutMapping("/{id}")
-    public ResponseEntity<BoutiqueCreationDTO> updateCategory(@PathVariable Long id, @RequestBody @Valid BoutiqueCreationDTO boutiqueCreationDTO) {
+    public ResponseEntity<BoutiqueCreationDTO> updateBoutique(@PathVariable Long id, @RequestBody @Valid BoutiqueCreationDTO boutiqueCreationDTO) {
         boutiqueService.updateBoutique(id,boutiqueCreationDTO);
         return new ResponseEntity<>(boutiqueCreationDTO,HttpStatus.OK);
+    }
+
+    @Operation(summary = "La suppression d'une boutique", description = "Cette méthode permet de supprimer une boutique")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "No content"),
+            @ApiResponse(responseCode = "404", description = "Not found"),
+            @ApiResponse(responseCode = "400", description = "BadRequest")})
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> deleteBoutique(@PathVariable Long id) {
+
+        boutiqueService.deleteBoutique(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

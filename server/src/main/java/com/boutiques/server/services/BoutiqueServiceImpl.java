@@ -6,6 +6,7 @@ import com.boutiques.server.entities.Boutique;
 import com.boutiques.server.mappers.BoutiqueMapper;
 import com.boutiques.server.repositories.BoutiqueRepository;
 import com.boutiques.server.repositories.OuvertreRepository;
+import com.boutiques.server.repositories.ProduitRepository;
 import com.boutiques.server.services.interfaces.IBoutiqueService;
 import lombok.var;
 import org.slf4j.Logger;
@@ -29,7 +30,11 @@ public class BoutiqueServiceImpl implements IBoutiqueService {
     private OuvertreRepository ouvertreRepository;
 
     @Autowired
+    private ProduitRepository produitRepository;
+
+    @Autowired
     private BoutiqueMapper boutiqueMapper;
+
 
     /**
      * La création d'une nouvelle boutique
@@ -76,5 +81,22 @@ public class BoutiqueServiceImpl implements IBoutiqueService {
         boutiqueRepository.save(boutique);
         //Modifier les horaires
         ouvertreRepository.saveAll(boutique.getOuvertures());
+    }
+
+    @Override
+    public void deleteBoutique(Long id) {
+        Boutique boutique = boutiqueRepository.findBoutiqueById(id)
+                .orElseThrow(()-> new BoutiqueException("La boutique n'existe pas."));
+        logger.trace("Début de suppression d'une boutique");
+        if(boutique.getOuvertures().size()!=0){
+            //Pour la compositon supprimer les horaires associés
+            ouvertreRepository.deleteAll(boutique.getOuvertures());
+        }
+        if(boutique.getProduitSet().size()!=0){
+            //Pour la compositon supprimer les produits associés
+            produitRepository.deleteAll(boutique.getProduitSet());
+        }
+        boutiqueRepository.delete(boutique);
+        logger.info("La boutique" +boutique.getNom()+ " est supprimée avec succès.");
     }
 }
