@@ -20,9 +20,13 @@ export class BoutiqueServiceService {
     return this.httpClient.get<Boutique>(`${this.apiServerUrl}/boutiques/find` + id);
 
   }
-  addBoutique(nom : string) :Observable <Boutique>{
+  addBoutique(nom : string, horaire: Date, conge: boolean) :Observable <Boutique>{
     let boutique = {
-      nom : nom
+      nom : nom,
+      horaire: horaire,
+      conge : conge
+
+
     }
     return this.httpClient.post<Boutique>(`${this.apiServerUrl}/boutique/add`, boutique);
   }
@@ -32,7 +36,9 @@ export class BoutiqueServiceService {
   }
   updateBoutique(id : number, description: string) : Observable<Boutique> {
     let boutique = {
-      id : id
+
+      id : id,
+      description :description
       
     }
     return this.httpClient.patch<Boutique>(`${this.apiServerUrl}/boutique/update`, boutique);

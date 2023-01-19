@@ -6,5 +6,6 @@ export interface Boutique {
     conge : boolean;
     dateCreation : Date;
     produit : Produit[];
+    horaire : Date
 
 }

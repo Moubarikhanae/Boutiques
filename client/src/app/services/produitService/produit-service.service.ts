@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Produit } from 'src/app/models/produit';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { Categorie } from 'src/app/models/categorie';
 
 
 @Injectable({
@@ -20,14 +21,21 @@ export class ProduitServiceService {
   getProduitById(id : number) : Observable <Produit>{
     return this.httpClient.get<Produit>(`${this.apiServerUrl}/produit/find` + id)
   }
-  addProduit(produit : Produit) : Observable <Produit> {
+  addProduit(nom: string, description: string, categorie: Categorie, prix: number) : Observable <Produit> {
+    let produit ={
+      nom : nom,
+      description: description,
+      categorie :categorie,
+      prix : prix
+    }
    
     return this.httpClient.post<Produit>(`${this.apiServerUrl}/produit/add`, produit)
   }
-  updateAllProduit(produit : Produit) : Observable <Produit> {
-    return this.httpClient.put<Produit>(`${this.apiServerUrl}/produit/update`, produit)
-  }
-  updateProduit(produit :Produit) : Observable <Produit>{
+  updateProduit(description: string, prix: number ) : Observable <Produit>{
+    let produit = {
+      description: description,
+      prix: prix
+    }
     return this.httpClient.patch<Produit>(`${this.apiServerUrl}/produit/update`, produit)
   }
   deleteProduit(produitId : number) : Observable <void>{

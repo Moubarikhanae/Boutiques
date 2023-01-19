@@ -1,0 +1,30 @@
+
+<div>
+    <h1> 
+  Ajouter un utilisateur
+    </h1>
+  </div>
+  <form [formGroup]="boutiqueForm" (ngSubmit)="onSubmit()">
+    <mat-form-field  appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput [formControl]="nom"  placeholder="Nom">
+    </mat-form-field>
+    <br>
+    <mat-form-field  appearance="fill">
+    <mat-label>horaire</mat-label>
+    <input matInput [formControl]="horaire"  placeholder="Prénom">
+  </mat-form-field>
+  <br>
+  <mat-form-field  appearance="fill">
+  <mat-label>conge</mat-label>
+  <input matInput [formControl]="conge"  placeholder="Email">
+  </mat-form-field>
+  <br>
+
+  
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Annuler</button>
+      <button mat-button type="submit">Ajouter</button> 
+    </mat-dialog-actions>
+  
+  </form> 

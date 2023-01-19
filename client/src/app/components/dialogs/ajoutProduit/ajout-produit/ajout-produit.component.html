@@ -1,0 +1,35 @@
+
+<div>
+    <h1> 
+  Ajouter un produit
+    </h1>
+  </div>
+  <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
+    <mat-form-field  appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput [formControl]="nom"  placeholder="Nom">
+    </mat-form-field>
+    <br>
+    <mat-form-field  appearance="fill">
+    <mat-label>description</mat-label>
+    <input matInput [formControl]="description"  placeholder="Description">
+  </mat-form-field>
+  <br>
+  <mat-form-field  appearance="fill">
+  <mat-label>categrorie</mat-label>
+  <input matInput [formControl]="categorie"  placeholder="Catégorie">
+  </mat-form-field>
+  <br>
+  <mat-form-field  appearance="fill">
+    <mat-label>prix</mat-label>
+    <input matInput [formControl]="prix"  placeholder="Prix">
+    </mat-form-field>
+    <br>
+
+  
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Annuler</button>
+      <button mat-button type="submit">Ajouter</button> 
+    </mat-dialog-actions>
+  
+  </form> 
