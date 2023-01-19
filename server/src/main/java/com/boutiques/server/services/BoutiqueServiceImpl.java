@@ -7,6 +7,7 @@ import com.boutiques.server.mappers.BoutiqueMapper;
 import com.boutiques.server.repositories.BoutiqueRepository;
 import com.boutiques.server.repositories.OuvertreRepository;
 import com.boutiques.server.services.interfaces.IBoutiqueService;
+import lombok.var;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +49,32 @@ public class BoutiqueServiceImpl implements IBoutiqueService {
         boutique.setDateCreation(date);
         boutiqueRepository.save(boutique);
         //Ajouter les horaires
-        ouvertreRepository.saveAll(boutiqueCreationDTO.getOuvertures());
+        boutique.getOuvertures().forEach(ouverture -> {
+            ouverture.setBoutique(boutique);
+            ouvertreRepository.save(ouverture);
+        });
         logger.info("La boutique" +boutiqueCreationDTO.getNom()+ " est créée avec succès.");
         return boutique;
+    }
+
+    @Override
+    public void updateBoutique(Long id,BoutiqueCreationDTO boutiqueCreationDTO) {
+        Boutique boutique = boutiqueRepository.findBoutiqueById(id)
+                .orElseThrow(()-> new BoutiqueException("La boutique n'existe pas."));
+        if (boutiqueRepository.findBoutiqueByNom(boutiqueCreationDTO.getNom()).isPresent() && !boutique.getNom().equals(boutiqueCreationDTO.getNom())) {
+            logger.error("La boutique avec le nom: " +boutiqueCreationDTO.getNom()+ " existe déjà.");
+            throw new BoutiqueException("La catégorie avec le nom" + boutiqueCreationDTO.getNom() + " existe déjà");
+        }
+        boutique.setNom(boutiqueCreationDTO.getNom());
+        boutique.setConge(boutiqueCreationDTO.isConge());
+        for (int i=0 ; i<boutique.getOuvertures().size(); i++) {
+            boutique.getOuvertures().get(i).setHoraireOuverture(
+                    boutiqueCreationDTO.getOuvertures().get(i).getHoraireOuverture());
+            boutique.getOuvertures().get(i).setHoraireFermeture(
+                    boutiqueCreationDTO.getOuvertures().get(i).getHoraireFermeture());
+        }
+        boutiqueRepository.save(boutique);
+        //Modifier les horaires
+        ouvertreRepository.saveAll(boutique.getOuvertures());
     }
 }

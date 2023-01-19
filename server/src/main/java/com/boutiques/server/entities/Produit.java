@@ -4,7 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -43,7 +45,7 @@ public class Produit {
     inverseJoinColumns = @JoinColumn(name = "id_categorie"))
     @Getter
     @Setter
-    private Set<Categorie> categorieSet = new HashSet<Categorie>();
+    private List<Categorie> categorieSet = new ArrayList<Categorie>();
 
     public Produit() {
     }
