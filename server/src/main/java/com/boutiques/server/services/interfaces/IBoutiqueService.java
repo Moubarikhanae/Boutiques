@@ -6,4 +6,5 @@ import com.boutiques.server.entities.Boutique;
 public interface IBoutiqueService {
     Boutique createBoutique(BoutiqueCreationDTO boutiqueCreationDTO);
     void updateBoutique(Long id, BoutiqueCreationDTO boutiqueCreationDTO);
+    void deleteBoutique(Long id);
 }
