@@ -1,16 +1,14 @@
 package com.boutiques.server.dtos.boutiques;
 
 import com.boutiques.server.entities.Ouverture;
-import com.boutiques.server.entities.Produit;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoutiqueCreationDTO {
 
@@ -26,6 +24,6 @@ public class BoutiqueCreationDTO {
 
     @Getter
     @Setter
-    private Set<Ouverture> ouvertures = new HashSet<Ouverture>();
+    private List<Ouverture> ouvertures = new ArrayList<>();
 
 }

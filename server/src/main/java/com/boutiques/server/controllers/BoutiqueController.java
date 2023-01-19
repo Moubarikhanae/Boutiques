@@ -14,10 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -40,5 +37,16 @@ public class BoutiqueController {
     public ResponseEntity<Boutique> createBoutique(@RequestBody @Valid BoutiqueCreationDTO boutiqueCreationDTO) {
         Boutique boutique = boutiqueService.createBoutique(boutiqueCreationDTO);
         return new ResponseEntity<>(boutique, HttpStatus.OK);
+    }
+
+    @Operation(summary = "La modification d'une boutique", description = "Cette méthode permet de modifier une boutique")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation"),
+            @ApiResponse(responseCode = "404", description = "Not found"),
+            @ApiResponse(responseCode = "400", description = "BadRequest")})
+    @PutMapping("/{id}")
+    public ResponseEntity<BoutiqueCreationDTO> updateCategory(@PathVariable Long id, @RequestBody @Valid BoutiqueCreationDTO boutiqueCreationDTO) {
+        boutiqueService.updateBoutique(id,boutiqueCreationDTO);
+        return new ResponseEntity<>(boutiqueCreationDTO,HttpStatus.OK);
     }
 }

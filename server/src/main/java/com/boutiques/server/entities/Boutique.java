@@ -5,7 +5,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -33,12 +35,12 @@ public class Boutique {
     @OneToMany(mappedBy = "boutique")
     @Getter
     @Setter
-    private Set<Produit> produitSet = new HashSet<Produit>();
+    private List<Produit> produitSet = new ArrayList<>();
 
     @OneToMany(mappedBy = "boutique")
     @Getter
     @Setter
-    private Set<Ouverture> ouvertures = new HashSet<Ouverture>();
+    private List<Ouverture> ouvertures = new ArrayList<>();
 
     public Boutique() {
     }
