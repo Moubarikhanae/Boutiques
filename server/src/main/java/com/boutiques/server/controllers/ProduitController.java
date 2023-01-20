@@ -58,4 +58,12 @@ public class ProduitController {
         produitService.deleteProduit(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @Operation(summary = "La liste des produits", description = "Cette méthode permet de lister les produits")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation")})
+    @GetMapping()
+    public ResponseEntity<?> getAllProduits() {
+        return new ResponseEntity<>(produitService.retreiveProduit(),HttpStatus.OK);
+    }
 }
