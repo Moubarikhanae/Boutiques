@@ -1,7 +1,6 @@
 package com.boutiques.server.services;
 
 import com.boutiques.server.commons.exceptions.BoutiqueException;
-import com.boutiques.server.controllers.CategorieController;
 import com.boutiques.server.dtos.categories.CategorieCreationDTO;
 import com.boutiques.server.entities.Categorie;
 import com.boutiques.server.mappers.CategorieMapper;
@@ -11,9 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +43,11 @@ public class CategorieServiceImpl implements ICategorieService {
         return categorieCreated;
     }
 
+    /**
+     * Find Categorie by name
+     * @param name
+     * @return Categorie
+     */
     @Override
     public Optional<Categorie> findCategorieByName(String name) {
 

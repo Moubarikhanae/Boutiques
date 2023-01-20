@@ -1,8 +1,10 @@
 package com.boutiques.server.controllers;
 
 import com.boutiques.server.dtos.boutiques.BoutiqueCreationDTO;
+import com.boutiques.server.dtos.boutiques.BoutiqueDTO;
 import com.boutiques.server.dtos.categories.CategorieCreationDTO;
 import com.boutiques.server.entities.Boutique;
+import com.boutiques.server.mappers.BoutiqueMapper;
 import com.boutiques.server.services.BoutiqueServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -17,6 +19,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -29,6 +33,9 @@ public class BoutiqueController {
 
     @Autowired
     private BoutiqueServiceImpl boutiqueService;
+
+    @Autowired
+    private BoutiqueMapper boutiqueMapper;
 
     @Operation(summary = "La création d'une boutique", description = "Cette méthode crée une nouvelle boutique")
     @ApiResponses(value = {
@@ -61,5 +68,18 @@ public class BoutiqueController {
 
         boutiqueService.deleteBoutique(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @Operation(summary = "La liste des boutiques", description = "Cette méthode permet de lister les boutiques")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation")})
+    @GetMapping()
+    public ResponseEntity<?> getAllBoutique() {
+        List<BoutiqueDTO> boutiqueDTOS = new ArrayList<BoutiqueDTO>();
+        List<Boutique> boutiques = boutiqueService.retreiveBoutique();
+        boutiques.forEach(boutique -> {
+            boutiqueDTOS.add(boutiqueMapper.boutiqueToBoutiqueDto(boutique));
+        });
+        return new ResponseEntity<>(boutiqueDTOS,HttpStatus.OK);
     }
 }
