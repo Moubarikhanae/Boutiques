@@ -2,7 +2,6 @@ package com.boutiques.server.controllers;
 
 import com.boutiques.server.dtos.boutiques.BoutiqueCreationDTO;
 import com.boutiques.server.dtos.boutiques.BoutiqueDTO;
-import com.boutiques.server.dtos.categories.CategorieCreationDTO;
 import com.boutiques.server.entities.Boutique;
 import com.boutiques.server.mappers.BoutiqueMapper;
 import com.boutiques.server.services.BoutiqueServiceImpl;
