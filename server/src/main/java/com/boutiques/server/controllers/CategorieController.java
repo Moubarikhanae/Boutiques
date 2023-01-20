@@ -1,10 +1,6 @@
 package com.boutiques.server.controllers;
 
-import com.boutiques.server.commons.exceptions.BoutiqueException;
 import com.boutiques.server.dtos.categories.CategorieCreationDTO;
-import com.boutiques.server.dtos.categories.CategorieDTO;
-import com.boutiques.server.entities.Categorie;
-import com.boutiques.server.mappers.CategorieMapper;
 import com.boutiques.server.services.interfaces.ICategorieService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

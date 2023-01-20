@@ -5,9 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 public class Produit {
@@ -32,7 +31,7 @@ public class Produit {
 
     @Getter
     @Setter
-    private Long quantité;
+    private Long quantite;
 
     @ManyToOne
     @JoinColumn(name = "id_boutique")
