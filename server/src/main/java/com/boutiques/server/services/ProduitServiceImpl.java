@@ -2,6 +2,7 @@ package com.boutiques.server.services;
 
 import com.boutiques.server.commons.exceptions.BoutiqueException;
 import com.boutiques.server.dtos.produits.ProduitCreationDTO;
+import com.boutiques.server.dtos.produits.ProduitDTO;
 import com.boutiques.server.entities.Boutique;
 import com.boutiques.server.entities.Produit;
 import com.boutiques.server.mappers.ProduitMapper;
@@ -12,6 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ProduitServiceImpl implements IProduitService {
@@ -69,5 +73,15 @@ public class ProduitServiceImpl implements IProduitService {
         logger.trace("Début de suppression d'un produit");
         produitRepository.delete(produit);
         logger.info("Le produit" +produit.getNom()+ " est supprimée avec succès.");
+    }
+
+    @Override
+    public List<ProduitDTO> retreiveProduit() {
+        List<Produit> produits = produitRepository.findAll();
+        List<ProduitDTO> produitDTOS = new ArrayList<>();
+        produits.forEach(produit -> {
+            produitDTOS.add(produitMapper.produitToProduitDto(produit));
+        });
+        return produitDTOS;
     }
 }
