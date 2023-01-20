@@ -22,7 +22,7 @@ public class Categorie {
     @Setter
     private String nom;
 
-    @ManyToMany(mappedBy = "categorieSet")
+    @ManyToMany(cascade = CascadeType.REMOVE, mappedBy = "categorieSet")
     private List<Produit> produitSet = new ArrayList<Produit>();
     public Categorie() {
     }

@@ -43,4 +43,22 @@ public class ProduitServiceImpl implements IProduitService {
         logger.info("Le produit" +produit1.getNom()+ " est créée avec succès.");
         return produitMapper.produitToProduitCreationDto(produit);
     }
+
+    @Override
+    public void updateProduit(Long id, ProduitCreationDTO produitCreationDTO) {
+        Produit produit = produitRepository.findProduitById(id)
+                .orElseThrow(()-> new BoutiqueException("Le produit n'existe pas."));
+
+        if (produitRepository.findProduitByNom(produitCreationDTO.getNom()).isPresent() && !produit.getNom().equals(produitCreationDTO.getNom())) {
+            logger.error("Le produit avec le nom: " +produitCreationDTO.getNom()+ " existe déjà.");
+            throw new BoutiqueException("Le produit avec le nom" + produitCreationDTO.getNom() + " existe déjà");
+        }
+
+        produit.setNom(produitCreationDTO.getNom());
+        produit.setDescription(produitCreationDTO.getDescription());
+        produit.setPrix(produitCreationDTO.getPrix());
+        produit.setQuantite(produitCreationDTO.getQuantite());
+        produit.setCategorieSet(produitCreationDTO.getCategorieSet());
+        produitRepository.save(produit);
+    }
 }
