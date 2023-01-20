@@ -61,4 +61,13 @@ public class ProduitServiceImpl implements IProduitService {
         produit.setCategorieSet(produitCreationDTO.getCategorieSet());
         produitRepository.save(produit);
     }
+
+    @Override
+    public void deleteProduit(Long id) {
+        Produit produit = produitRepository.findProduitById(id)
+                .orElseThrow(()-> new BoutiqueException("Le produit n'existe pas."));
+        logger.trace("Début de suppression d'un produit");
+        produitRepository.delete(produit);
+        logger.info("Le produit" +produit.getNom()+ " est supprimée avec succès.");
+    }
 }

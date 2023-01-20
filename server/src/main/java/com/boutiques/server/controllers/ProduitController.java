@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/produits")
@@ -44,5 +45,17 @@ public class ProduitController {
     public ResponseEntity<ProduitCreationDTO> updateProduit(@PathVariable Long id, @RequestBody @Valid ProduitCreationDTO produitCreationDTO) {
         produitService.updateProduit(id,produitCreationDTO);
         return new ResponseEntity<>(produitCreationDTO,HttpStatus.OK);
+    }
+
+    @Operation(summary = "La suppression d'un produit", description = "Cette méthode permet de supprimer un produit")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "No content"),
+            @ApiResponse(responseCode = "404", description = "Not found"),
+            @ApiResponse(responseCode = "400", description = "BadRequest")})
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> deleteProduit(@PathVariable Long id) {
+
+        produitService.deleteProduit(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
