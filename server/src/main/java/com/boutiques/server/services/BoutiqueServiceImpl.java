@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Service
@@ -56,12 +57,18 @@ public class BoutiqueServiceImpl implements IBoutiqueService {
         //Ajouter les horaires
         boutique.getOuvertures().forEach(ouverture -> {
             ouverture.setBoutique(boutique);
+            if(ouverture.getJour() == 0) ouverture.setJour(1);
             ouvertreRepository.save(ouverture);
         });
         logger.info("La boutique" +boutiqueCreationDTO.getNom()+ " est créée avec succès.");
         return boutique;
     }
 
+    /**
+     * Update boutique
+     * @param id
+     * @param boutiqueCreationDTO
+     */
     @Override
     public void updateBoutique(Long id,BoutiqueCreationDTO boutiqueCreationDTO) {
         Boutique boutique = boutiqueRepository.findBoutiqueById(id)
@@ -83,6 +90,10 @@ public class BoutiqueServiceImpl implements IBoutiqueService {
         ouvertreRepository.saveAll(boutique.getOuvertures());
     }
 
+    /**
+     * Delete boutique
+     * @param id
+     */
     @Override
     public void deleteBoutique(Long id) {
         Boutique boutique = boutiqueRepository.findBoutiqueById(id)
@@ -98,5 +109,14 @@ public class BoutiqueServiceImpl implements IBoutiqueService {
         }
         boutiqueRepository.delete(boutique);
         logger.info("La boutique" +boutique.getNom()+ " est supprimée avec succès.");
+    }
+
+    /**
+     * Display all boutique
+     * @return list
+     */
+    @Override
+    public List<Boutique> retreiveBoutique() {
+        return boutiqueRepository.findAll();
     }
 }

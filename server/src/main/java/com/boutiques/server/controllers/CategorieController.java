@@ -67,7 +67,7 @@ public class CategorieController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "successful operation")})
     @GetMapping()
-    public ResponseEntity<?> getAllPosts() {
+    public ResponseEntity<?> getAllCategories() {
         return new ResponseEntity<>(categorieService.retreiveCategories(),HttpStatus.OK);
     }
 }
