@@ -75,7 +75,7 @@ public class BoutiqueServiceImpl implements IBoutiqueService {
                 .orElseThrow(()-> new BoutiqueException("La boutique n'existe pas."));
         if (boutiqueRepository.findBoutiqueByNom(boutiqueCreationDTO.getNom()).isPresent() && !boutique.getNom().equals(boutiqueCreationDTO.getNom())) {
             logger.error("La boutique avec le nom: " +boutiqueCreationDTO.getNom()+ " existe déjà.");
-            throw new BoutiqueException("La catégorie avec le nom" + boutiqueCreationDTO.getNom() + " existe déjà");
+            throw new BoutiqueException("La boutique avec le nom" + boutiqueCreationDTO.getNom() + " existe déjà");
         }
         boutique.setNom(boutiqueCreationDTO.getNom());
         boutique.setConge(boutiqueCreationDTO.isConge());

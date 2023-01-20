@@ -34,4 +34,15 @@ public class ProduitController {
         ProduitCreationDTO produit = produitService.createProduit(id, produitCreationDTO);
         return new ResponseEntity<>(produit, HttpStatus.OK);
     }
+
+    @Operation(summary = "La modification d'un produit'", description = "Cette méthode permet de modifier un produit")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation"),
+            @ApiResponse(responseCode = "404", description = "Not found"),
+            @ApiResponse(responseCode = "400", description = "BadRequest")})
+    @PutMapping("/{id}")
+    public ResponseEntity<ProduitCreationDTO> updateProduit(@PathVariable Long id, @RequestBody @Valid ProduitCreationDTO produitCreationDTO) {
+        produitService.updateProduit(id,produitCreationDTO);
+        return new ResponseEntity<>(produitCreationDTO,HttpStatus.OK);
+    }
 }
