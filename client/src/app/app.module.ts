@@ -11,6 +11,7 @@ import { AjoutBoutiqueComponent } from './components/dialogs/ajoutBoutique/ajout
 import { AjoutCategorieComponent } from './components/dialogs/ajoutCategorie/ajout-categorie/ajout-categorie.component';
 import { AjoutProduitComponent } from './components/dialogs/ajoutProduit/ajout-produit/ajout-produit.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDialogModule} from '@angular/material/dialog'
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatDialogModule,
 
   ],
 
