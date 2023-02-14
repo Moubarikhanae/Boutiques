@@ -10,6 +10,7 @@ import { CategorieListComponent } from './components/categorie-list/categorie-li
 import { AgGridModule } from 'ag-grid-angular';
 import { ButtonCellRendererComponent } from './components/button-cell-renderer/button-cell-renderer.component';
 import { CategorieUpdateComponent } from './components/categorie-update/categorie-update.component';
+import { CategorieDetailsComponent } from './components/categorie-details/categorie-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CategorieUpdateComponent } from './components/categorie-update/categori
     CreateCategorieComponent,
     CategorieListComponent,
     ButtonCellRendererComponent,
-    CategorieUpdateComponent
+    CategorieUpdateComponent,
+    CategorieDetailsComponent
   ],
   imports: [
     BrowserModule,

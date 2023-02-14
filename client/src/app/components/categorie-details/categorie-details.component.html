@@ -1,0 +1,12 @@
+<h2>Détails d'une catégorie</h2> 
+
+<hr/>
+<div *ngIf="categorie">
+  <div>
+    <label><b>Nom: </b></label> {{categorie.nom}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Retourner à la liste des catégories</button><br>
