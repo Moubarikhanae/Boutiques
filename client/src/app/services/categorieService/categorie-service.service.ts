@@ -19,4 +19,8 @@ export class CategorieServiceService {
   deleteCategorie(id: number): Observable<any> {
     return this.http.delete(`${AUTH_API}/${id}`, { responseType: 'text' });
   }
+
+  createCategorie(categorie:Object): Observable<Object>{
+    return this.http.post(`${AUTH_API}/save-categorie`,categorie);
+  }
 }
