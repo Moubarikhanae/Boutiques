@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.sql.Time;
 
 @Entity
@@ -28,6 +30,8 @@ public class Ouverture {
 
     @Getter
     @Setter
+    @Min(value = 1, message = "Le jour doit être une valeur entre 1 (Lundi) et 7 (Dimanche).")
+    @Max(value = 7, message = "Le jour doit être une valeur entre 1 (Lundi) et 7 (Dimanche).")
     private int jour;
 
     @ManyToOne

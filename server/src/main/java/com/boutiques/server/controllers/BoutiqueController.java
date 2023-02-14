@@ -41,8 +41,8 @@ public class BoutiqueController {
             @ApiResponse(responseCode = "200", description = "successful operation"),
             @ApiResponse(responseCode = "400", description = "BadRequest")})
     @PostMapping("/save-boutique")
-    public ResponseEntity<Boutique> createBoutique(@RequestBody @Valid BoutiqueCreationDTO boutiqueCreationDTO) {
-        Boutique boutique = boutiqueService.createBoutique(boutiqueCreationDTO);
+    public ResponseEntity<BoutiqueDTO> createBoutique(@RequestBody @Valid BoutiqueCreationDTO boutiqueCreationDTO) {
+        BoutiqueDTO boutique = boutiqueService.createBoutique(boutiqueCreationDTO);
         return new ResponseEntity<>(boutique, HttpStatus.OK);
     }
 
