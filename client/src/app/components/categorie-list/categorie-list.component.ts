@@ -19,7 +19,7 @@ export class CategorieListComponent implements OnInit {
   rowData: Categorie[];
 
   constructor(private categorieService:CategorieServiceService,
-    private route: Router) { }
+    private route: Router, private router: Router) { }
     
     public defaultColDef: ColDef = {
       flex: 1,
@@ -49,11 +49,13 @@ export class CategorieListComponent implements OnInit {
       field: 'Actions',
       cellRenderer: ButtonCellRendererComponent,
       cellRendererParams: {
-        clicked: (params: any) => this.deleteCategorie(params)
+        clicked: (params: any) => this.deleteCategorie(params),
+        onUpdate: (params: any) => this.updateCategorie(params)
+
       },
     }
 ];
-deleteCategorie(params:any){
+deleteCategorie(params: any){
   this.categorieService.deleteCategorie(params)
   .subscribe(
     (data: any) => {
@@ -61,6 +63,10 @@ deleteCategorie(params:any){
     },
     (error: any) => console.log(error));
     }
+
+  updateCategorie(params: any) {
+    this.router.navigate(['update-categorie', params]);
+  }
 }
 var filterParams: IDateFilterParams = {
   comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {

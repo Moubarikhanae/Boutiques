@@ -5,7 +5,10 @@ import { ICellRendererParams } from 'ag-grid-community';
 @Component({
   selector: 'app-button-cell-renderer',
   template: `
-  <button class="btn btn-danger" (click)="btnClickedHandler($event)">Supprimer</button>
+  <button class="btn btn-danger" (click)="btnClickedHandler($event)"><i class="bi bi-search"></i> supprimer</button>
+  &nbsp; &nbsp; &nbsp;<button class = "btn btn-primary" (click)="onEditClicked($event)">
+      Modifier
+    </button>
 `,
   styleUrls: ['./button-cell-renderer.component.css']
 })
@@ -24,7 +27,10 @@ export class ButtonCellRendererComponent implements OnInit, ICellRendererAngular
     this.params = params;
   }
 
-  btnClickedHandler(name:any) {
+  btnClickedHandler(name: any) {
     this.params.clicked(this.params.node.data.id);
+  }
+  onEditClicked(params: any) {
+    this.params.onUpdate(this.params.node.data.id);
   }
 }
