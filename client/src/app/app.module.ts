@@ -9,13 +9,15 @@ import { CreateCategorieComponent } from './components/create-categorie/create-c
 import { CategorieListComponent } from './components/categorie-list/categorie-list.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { ButtonCellRendererComponent } from './components/button-cell-renderer/button-cell-renderer.component';
+import { CategorieUpdateComponent } from './components/categorie-update/categorie-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateCategorieComponent,
     CategorieListComponent,
-    ButtonCellRendererComponent
+    ButtonCellRendererComponent,
+    CategorieUpdateComponent
   ],
   imports: [
     BrowserModule,

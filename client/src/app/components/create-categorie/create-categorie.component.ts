@@ -26,7 +26,7 @@ export class CreateCategorieComponent implements OnInit {
       },
       (error: any) => {
         this.errorMessage = error.error.message;
-        console.log(this.errorMessage)
+        console.log(error)
       }
     );
   }

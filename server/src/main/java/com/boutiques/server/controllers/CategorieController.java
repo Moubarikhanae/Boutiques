@@ -67,4 +67,12 @@ public class CategorieController {
     public ResponseEntity<?> getAllCategories() {
         return new ResponseEntity<>(categorieService.retreiveCategories(),HttpStatus.OK);
     }
+
+    @Operation(summary = "Retourner une catégorie", description = "Cette méthode permet de retourner une catégorie spécifique")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation")})
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getCategorie(@PathVariable Long id) {
+        return new ResponseEntity<>(categorieService.findCategorieById(id),HttpStatus.OK);
+    }
 }

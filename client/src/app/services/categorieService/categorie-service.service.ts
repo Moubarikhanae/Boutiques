@@ -23,4 +23,12 @@ export class CategorieServiceService {
   createCategorie(categorie:Object): Observable<Object>{
     return this.http.post(`${AUTH_API}/save-categorie`,categorie);
   }
+
+  updateCategorie(id: number, value: any): Observable<Object> {
+    return this.http.put(`${AUTH_API}/${id}`, value);
+  }
+
+  getCategorie(id: number): Observable<any> {
+    return this.http.get(`${AUTH_API}/${id}`);
+  }
 }
