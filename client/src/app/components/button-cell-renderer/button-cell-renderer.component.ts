@@ -9,6 +9,9 @@ import { ICellRendererParams } from 'ag-grid-community';
   &nbsp; &nbsp; &nbsp;<button class = "btn btn-primary" (click)="onEditClicked($event)">
       Modifier
     </button>
+    &nbsp; &nbsp; &nbsp;<button class = "btn btn-warning" style="color:white" (click)="onDetailsClicked($event)">
+      Détails
+    </button>
 `,
   styleUrls: ['./button-cell-renderer.component.css']
 })
@@ -32,5 +35,8 @@ export class ButtonCellRendererComponent implements OnInit, ICellRendererAngular
   }
   onEditClicked(params: any) {
     this.params.onUpdate(this.params.node.data.id);
+  }
+  onDetailsClicked(prams: any) {
+    this.params.onDetails(this.params.node.data.id);
   }
 }

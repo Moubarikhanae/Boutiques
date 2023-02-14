@@ -50,7 +50,8 @@ export class CategorieListComponent implements OnInit {
       cellRenderer: ButtonCellRendererComponent,
       cellRendererParams: {
         clicked: (params: any) => this.deleteCategorie(params),
-        onUpdate: (params: any) => this.updateCategorie(params)
+        onUpdate: (params: any) => this.updateCategorie(params),
+        onDetails: (params: any) => this.datailsCategorie(params)
 
       },
     }
@@ -66,6 +67,10 @@ deleteCategorie(params: any){
 
   updateCategorie(params: any) {
     this.router.navigate(['update-categorie', params]);
+  }
+
+  datailsCategorie(id: number){
+    this.router.navigate(['details-categorie', id]);
   }
 }
 var filterParams: IDateFilterParams = {
