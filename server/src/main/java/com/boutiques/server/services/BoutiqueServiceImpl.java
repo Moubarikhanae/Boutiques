@@ -1,7 +1,8 @@
 package com.boutiques.server.services;
 
-import com.boutiques.server.commons.exceptions.BoutiqueException;
+import com.boutiques.server.commons.exceptions.*;
 import com.boutiques.server.dtos.boutiques.BoutiqueCreationDTO;
+import com.boutiques.server.dtos.boutiques.BoutiqueDTO;
 import com.boutiques.server.entities.Boutique;
 import com.boutiques.server.mappers.BoutiqueMapper;
 import com.boutiques.server.repositories.BoutiqueRepository;
@@ -43,11 +44,11 @@ public class BoutiqueServiceImpl implements IBoutiqueService {
      * @return Boutique créée
      */
     @Override
-    public Boutique createBoutique(BoutiqueCreationDTO boutiqueCreationDTO) {
+    public BoutiqueDTO createBoutique(BoutiqueCreationDTO boutiqueCreationDTO) {
         //tester si le nom existe déjà, afin de respecter son unicité
         if(boutiqueRepository.findBoutiqueByNom(boutiqueCreationDTO.getNom()).isPresent()){
             logger.error("La boutique avec le nom: " +boutiqueCreationDTO.getNom()+ " existe déjà.");
-            throw new BoutiqueException("La boutique avec le nom" + boutiqueCreationDTO.getNom() + " existe déjà");
+            throw new BoutiqueException("La boutique avec le nom " + boutiqueCreationDTO.getNom() + " existe déjà");
         }
         logger.trace("Début de crétaion d'une boutique");
         Boutique boutique = boutiqueMapper.boutiqueCreationDtoToBoutique(boutiqueCreationDTO);
@@ -60,8 +61,9 @@ public class BoutiqueServiceImpl implements IBoutiqueService {
             if(ouverture.getJour() == 0) ouverture.setJour(1);
             ouvertreRepository.save(ouverture);
         });
-        logger.info("La boutique" +boutiqueCreationDTO.getNom()+ " est créée avec succès.");
-        return boutique;
+        logger.info("La boutique " +boutiqueCreationDTO.getNom()+ " est créée avec succès.");
+        BoutiqueDTO boutiqueDTO = boutiqueMapper.boutiqueToBoutiqueDto(boutique);
+        return boutiqueDTO;
     }
 
     /**

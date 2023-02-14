@@ -1,7 +1,7 @@
 package com.boutiques.server.controllers;
 
-import com.boutiques.server.dtos.categories.CategorieCreationDTO;
-import com.boutiques.server.services.interfaces.ICategorieService;
+import com.boutiques.server.dtos.categories.*;
+import com.boutiques.server.services.interfaces.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -19,6 +19,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/categories")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 @Tag(name = "Catégorie", description = "La gestion des catégories")
 public class CategorieController {
 

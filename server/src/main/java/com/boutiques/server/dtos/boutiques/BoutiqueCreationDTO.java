@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class BoutiqueCreationDTO {
 
     @Getter
     @Setter
+    @Valid
     private List<Ouverture> ouvertures = new ArrayList<>();
 
 }
