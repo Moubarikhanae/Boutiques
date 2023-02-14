@@ -67,13 +67,13 @@ public class CategorieServiceImpl implements ICategorieService {
 
         if (categorieRepository.findCategorieByNom(categorieCreationDTO.getNom()).isPresent() && !categorie.getNom().equals(categorieCreationDTO.getNom())) {
             logger.error("La catégorie avec le nom: " +categorieCreationDTO.getNom()+ " existe déjà.");
-            throw new BoutiqueException("La catégorie avec le nom" + categorieCreationDTO.getNom() + " existe déjà");
+            throw new BoutiqueException("La catégorie avec le nom " + categorieCreationDTO.getNom() + " existe déjà");
         }
 
         categorie.setNom(categorieCreationDTO.getNom());
         logger.trace("Début de modification d'une catégorie");
         categorieRepository.save(categorie);
-        logger.info("La catégorie" +categorie.getNom()+ " est modifiée avec succès.");
+        logger.info("La catégorie " +categorie.getNom()+ " est modifiée avec succès.");
 
     }
     @Override
@@ -82,7 +82,7 @@ public class CategorieServiceImpl implements ICategorieService {
                 .orElseThrow(()-> new BoutiqueException("La catégorie n'existe pas."));
         logger.trace("Début de suppression d'une catégorie");
         categorieRepository.delete(categorie);
-        logger.info("La catégorie" +categorie.getNom()+ " est supprimée avec succès.");
+        logger.info("La catégorie " +categorie.getNom()+ " est supprimée avec succès.");
     }
 
     @Override
