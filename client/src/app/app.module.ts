@@ -12,6 +12,7 @@ import { ButtonCellRendererComponent } from './components/button-cell-renderer/b
 import { CategorieUpdateComponent } from './components/categorie-update/categorie-update.component';
 import { CategorieDetailsComponent } from './components/categorie-details/categorie-details.component';
 import { ListProduitsComponent } from './components/list-produits/list-produits.component';
+import { CreateProduitComponent } from './components/create-produit/create-produit.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ListProduitsComponent } from './components/list-produits/list-produits.
     ButtonCellRendererComponent,
     CategorieUpdateComponent,
     CategorieDetailsComponent,
-    ListProduitsComponent
+    ListProduitsComponent,
+    CreateProduitComponent
   ],
   imports: [
     BrowserModule,
