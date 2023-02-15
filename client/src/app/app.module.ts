@@ -13,6 +13,7 @@ import { CategorieUpdateComponent } from './components/categorie-update/categori
 import { CategorieDetailsComponent } from './components/categorie-details/categorie-details.component';
 import { ListProduitsComponent } from './components/list-produits/list-produits.component';
 import { CreateProduitComponent } from './components/create-produit/create-produit.component';
+import { ProduitDetailsComponent } from './components/produit-details/produit-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CreateProduitComponent } from './components/create-produit/create-produ
     CategorieUpdateComponent,
     CategorieDetailsComponent,
     ListProduitsComponent,
-    CreateProduitComponent
+    CreateProduitComponent,
+    ProduitDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,5 @@
 package com.boutiques.server.dtos.produits;
 
-import com.boutiques.server.entities.Categorie;
 import lombok.Getter;
 import lombok.Setter;
 

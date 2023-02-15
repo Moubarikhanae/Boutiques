@@ -1,6 +1,7 @@
 package com.boutiques.server.controllers;
 
 import com.boutiques.server.dtos.produits.ProduitCreationDTO;
+import com.boutiques.server.entities.Categorie;
 import com.boutiques.server.services.interfaces.IProduitService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/produits")
@@ -67,4 +69,14 @@ public class ProduitController {
     public ResponseEntity<?> getAllProduits() {
         return new ResponseEntity<>(produitService.retreiveProduit(),HttpStatus.OK);
     }
+
+    @Operation(summary = "Retourner une produit", description = "Cette méthode permet de retourner un produit spécifique")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation")})
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getProduit(@PathVariable Long id) {
+        return new ResponseEntity<>(produitService.findProduitById(id),HttpStatus.OK);
+    }
+
+
 }

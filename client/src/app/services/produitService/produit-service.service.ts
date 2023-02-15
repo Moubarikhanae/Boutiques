@@ -25,5 +25,9 @@ export class ProduitServiceService {
   deleteProduit(id: number): Observable<any> {
     return this.httpClient.delete(`${PRODUIT_API}/${id}`, { responseType: 'text' });
   }
+
+  getProduit(id: number): Observable<any> {
+    return this.httpClient.get(`${PRODUIT_API}/${id}`);
+  }
  
 }
