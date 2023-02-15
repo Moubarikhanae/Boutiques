@@ -58,7 +58,7 @@ export class ListProduitsComponent implements OnInit {
       cellRenderer: ButtonCellRendererComponent,
       cellRendererParams: {
         clicked: (params: any) => this.deleteProduit(params),
-        //onUpdate: (params: any) => this.updateCategorie(params),
+        onUpdate: (params: any) => this.updateProduit(params),
         onDetails: (params: any) => this.datailsProduit(params)
 
       },
@@ -73,10 +73,10 @@ deleteProduit(params: any){
     (error: any) => console.log(error));
     }
 
- /* updateCategorie(params: any) {
-    this.router.navigate(['update-categorie', params]);
+ updateProduit(params: any) {
+    this.router.navigate(['update-produit', params]);
   }
-*/
+
   datailsProduit(id: number){
     this.router.navigate(['details-produit', id]);
   }

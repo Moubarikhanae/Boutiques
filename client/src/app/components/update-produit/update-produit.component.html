@@ -1,0 +1,62 @@
+<h3>Modifier un produit</h3>
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" id="name" 
+      required [(ngModel)]="produit.nom" 
+      minlength="2"name="name" #name="ngModel">
+      <div class="alert-danger" *ngIf="name.errors && submitted">
+    <div *ngIf="name.errors?.['required']">
+        Le nom est obligatoire.
+    </div>
+    <div *ngIf="name.errors?.['minlength']">
+        Le nom doit avoir au minimum 2 caractères.
+    </div>
+   
+</div>
+
+</div>
+<div class="form-group">
+    <label for="description">Description</label>
+    <textarea type="textarea" class="form-control" id="description" 
+     [(ngModel)]="produit.description"  
+     name="description" #description="ngModel"></textarea>
+</div>
+
+<div class="form-group input-group">
+    <div class="input-group-append">
+        <label class="input-group-text" for="prix">Prix</label>
+      </div>
+
+  <input type="text" class="form-control" required [(ngModel)]="produit.prix" name="prix" #prix="ngModel" >
+  <span class="input-group-text" style="float:right">€</span>
+  <div class="alert-danger" *ngIf="prix.errors && submitted" id="prix">
+    <div *ngIf="prix.errors?.['required']">
+        Le prix est obligatoire.
+    </div>
+</div>
+</div>
+
+<div class="form-group">
+    <label for="quantite">Quantité</label>
+    <input type="text" class="form-control" id="quantite" 
+     [(ngModel)]="produit.quantite" name="quantite" #quantite="ngModel">
+</div>
+
+<div class="form-group">
+    <select multiple name="categories" class="form-select" [(ngModel)]="produit.categorieSet">
+        <option *ngFor="let categorie of categories" [ngValue]="categorie">
+             {{ categorie.nom}} 
+        </option>
+    </select> 
+</div>
+
+
+<div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+</div>
+    <button type="submit" class="btn btn-success">Modifier</button>
+  </form>
+</div>
+
