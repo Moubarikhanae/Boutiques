@@ -29,5 +29,9 @@ export class ProduitServiceService {
   getProduit(id: number): Observable<any> {
     return this.httpClient.get(`${PRODUIT_API}/${id}`);
   }
+
+  updateProduit(id: number, value: any): Observable<Object> {
+    return this.httpClient.put(`${PRODUIT_API}/${id}`, value);
+  }
  
 }
