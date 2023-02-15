@@ -59,7 +59,7 @@ export class ListProduitsComponent implements OnInit {
       cellRendererParams: {
         clicked: (params: any) => this.deleteProduit(params),
         //onUpdate: (params: any) => this.updateCategorie(params),
-        //onDetails: (params: any) => this.datailsCategorie(params)
+        onDetails: (params: any) => this.datailsProduit(params)
 
       },
     }
@@ -76,11 +76,11 @@ deleteProduit(params: any){
  /* updateCategorie(params: any) {
     this.router.navigate(['update-categorie', params]);
   }
-
-  datailsCategorie(id: number){
-    this.router.navigate(['details-categorie', id]);
+*/
+  datailsProduit(id: number){
+    this.router.navigate(['details-produit', id]);
   }
-  **/
+  
 }
 var filterParams: IDateFilterParams = {
   comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {

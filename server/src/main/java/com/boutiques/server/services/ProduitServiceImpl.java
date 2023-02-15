@@ -4,6 +4,7 @@ import com.boutiques.server.commons.exceptions.BoutiqueException;
 import com.boutiques.server.dtos.produits.ProduitCreationDTO;
 import com.boutiques.server.dtos.produits.ProduitDTO;
 import com.boutiques.server.entities.Boutique;
+import com.boutiques.server.entities.Categorie;
 import com.boutiques.server.entities.Produit;
 import com.boutiques.server.mappers.ProduitMapper;
 import com.boutiques.server.repositories.BoutiqueRepository;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProduitServiceImpl implements IProduitService {
@@ -83,5 +85,10 @@ public class ProduitServiceImpl implements IProduitService {
             produitDTOS.add(produitMapper.produitToProduitDto(produit));
         });
         return produitDTOS;
+    }
+
+    @Override
+    public ProduitDTO findProduitById(Long id) {
+        return produitMapper.produitToProduitDto(produitRepository.findProduitById(id).get());
     }
 }
