@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProduitDTO {
+
+    @Getter
+    @Setter
+    private Long id;
+
     @Getter
     @Setter
     private String nom;

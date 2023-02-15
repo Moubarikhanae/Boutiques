@@ -57,15 +57,15 @@ export class ListProduitsComponent implements OnInit {
       resizable: true,
       cellRenderer: ButtonCellRendererComponent,
       cellRendererParams: {
-        //clicked: (params: any) => this.deleteCategorie(params),
+        clicked: (params: any) => this.deleteProduit(params),
         //onUpdate: (params: any) => this.updateCategorie(params),
         //onDetails: (params: any) => this.datailsCategorie(params)
 
       },
     }
 ];
-/**deleteCategorie(params: any){
-  this.produitService.deleteCategorie(params)
+deleteProduit(params: any){
+  this.produitService.deleteProduit(params)
   .subscribe(
     (data: any) => {
       this.reloadData();
@@ -73,7 +73,7 @@ export class ListProduitsComponent implements OnInit {
     (error: any) => console.log(error));
     }
 
-  updateCategorie(params: any) {
+ /* updateCategorie(params: any) {
     this.router.navigate(['update-categorie', params]);
   }
 
