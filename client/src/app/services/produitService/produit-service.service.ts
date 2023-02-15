@@ -5,33 +5,17 @@ import { Produit } from 'src/app/models/produit';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
-
+const PRODUIT_API = environment.apiURl + "/api/produits";
 @Injectable({
   providedIn: 'root'
 })
 export class ProduitServiceService {
-  private apiServerUrl = environment.apiURl
+
   constructor(private httpClient: HttpClient, private router: Router) { }
 
-  getAllProduit() : Observable <Produit[]>{
-    return this.httpClient.get<Produit[]>(`${this.apiServerUrl}/produits/all`)
+  getProduitsList() : Observable <Produit[]>{
+    return this.httpClient.get<any>(`${PRODUIT_API}`)
 
   }
-  getProduitById(id : number) : Observable <Produit>{
-    return this.httpClient.get<Produit>(`${this.apiServerUrl}/produit/find` + id)
-  }
-  addProduit(produit : Produit) : Observable <Produit> {
-   
-    return this.httpClient.post<Produit>(`${this.apiServerUrl}/produit/add`, produit)
-  }
-  updateAllProduit(produit : Produit) : Observable <Produit> {
-    return this.httpClient.put<Produit>(`${this.apiServerUrl}/produit/update`, produit)
-  }
-  updateProduit(produit :Produit) : Observable <Produit>{
-    return this.httpClient.patch<Produit>(`${this.apiServerUrl}/produit/update`, produit)
-  }
-  deleteProduit(produitId : number) : Observable <void>{
-    return this.httpClient.delete<void>(`${this.apiServerUrl}/produit/delete/${produitId}`)
-
-  }
+ 
 }
