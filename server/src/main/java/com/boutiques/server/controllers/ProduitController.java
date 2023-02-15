@@ -18,6 +18,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/produits")
+@CrossOrigin(origins = "http://localhost:4200")
 @AllArgsConstructor
 @Tag(name = "Produits", description = "La gestion des produits")
 public class ProduitController {
