@@ -21,5 +21,9 @@ export class ProduitServiceService {
   createProduit(id:number, produit: Object): Observable<Object> {
     return this.httpClient.post(`${PRODUIT_API}/${id}/save-produit`, produit);
   }
+
+  deleteProduit(id: number): Observable<any> {
+    return this.httpClient.delete(`${PRODUIT_API}/${id}`, { responseType: 'text' });
+  }
  
 }
