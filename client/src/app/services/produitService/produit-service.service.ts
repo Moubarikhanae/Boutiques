@@ -17,5 +17,9 @@ export class ProduitServiceService {
     return this.httpClient.get<any>(`${PRODUIT_API}`)
 
   }
+
+  createProduit(id:number, produit: Object): Observable<Object> {
+    return this.httpClient.post(`${PRODUIT_API}/${id}/save-produit`, produit);
+  }
  
 }
