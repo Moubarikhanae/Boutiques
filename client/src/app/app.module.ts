@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { ListProduitsComponent } from './components/list-produits/list-produits.
 import { CreateProduitComponent } from './components/create-produit/create-produit.component';
 import { ProduitDetailsComponent } from './components/produit-details/produit-details.component';
 import { UpdateProduitComponent } from './components/update-produit/update-produit.component';
+import { CreateBoutiqueComponent } from './components/create-boutique/create-boutique.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +28,16 @@ import { UpdateProduitComponent } from './components/update-produit/update-produ
     ListProduitsComponent,
     CreateProduitComponent,
     ProduitDetailsComponent,
-    UpdateProduitComponent
+    UpdateProduitComponent,
+    CreateBoutiqueComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    AgGridModule
+    AgGridModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

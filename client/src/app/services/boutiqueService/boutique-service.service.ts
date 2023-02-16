@@ -5,36 +5,32 @@ import { Boutique } from 'src/app/models/boutique';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
+const BOUTIQUE_API = environment.apiURl+"/api/boutiques";
+
 @Injectable({
   providedIn: 'root'
 })
 export class BoutiqueServiceService {
 
-  private apiServerUrl = environment.apiURl
-  constructor(private httpClient : HttpClient, private rooter : Router ) { }
+  constructor(private httpClient : HttpClient ) { }
 
-  getAllBoutiques(): Observable <Boutique[]> {
-    return this.httpClient.get<Boutique[]>(`${this.apiServerUrl}/boutiques/all`);
+  getBoutique(id: number): Observable<any> {
+    return this.httpClient.get(`${BOUTIQUE_API}/${id}`);
   }
-  getBoutiqueById(id : number) : Observable <Boutique>{
-    return this.httpClient.get<Boutique>(`${this.apiServerUrl}/boutiques/find` + id);
 
+  createBoutique(boutique: Object): Observable<Object> {
+    return this.httpClient.post(`${BOUTIQUE_API}/save-boutique`, boutique);
   }
-  addBoutique(nom : string) :Observable <Boutique>{
-    let boutique = {
-      nom : nom
-    }
-    return this.httpClient.post<Boutique>(`${this.apiServerUrl}/boutique/add`, boutique);
-  }
-  deleteBoutiqueById(id : number) : Observable<void>{
-    return this.httpClient.delete<void>(`${this.apiServerUrl}/boutique/delete/${id}`);
 
+  updateBoutique(id: number, value: any): Observable<Object> {
+    return this.httpClient.put(`${BOUTIQUE_API}/${id}`, value);
   }
-  updateBoutique(id : number, description: string) : Observable<Boutique> {
-    let boutique = {
-      id : id
-      
-    }
-    return this.httpClient.patch<Boutique>(`${this.apiServerUrl}/boutique/update`, boutique);
+
+  deleteBoutique(id: number): Observable<any> {
+    return this.httpClient.delete(`${BOUTIQUE_API}/${id}`, { responseType: 'text' });
+  }
+
+  getBoutiquesList(): Observable<any> {
+    return this.httpClient.get(`${BOUTIQUE_API}`);
   }
 }

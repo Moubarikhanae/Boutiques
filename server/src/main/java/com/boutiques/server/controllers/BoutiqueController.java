@@ -25,6 +25,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/boutiques")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 @Tag(name = "Boutique", description = "La gestion des boutiques")
 public class BoutiqueController {
 
@@ -79,6 +80,17 @@ public class BoutiqueController {
         boutiques.forEach(boutique -> {
             boutiqueDTOS.add(boutiqueMapper.boutiqueToBoutiqueDto(boutique));
         });
+        return new ResponseEntity<>(boutiqueDTOS,HttpStatus.OK);
+    }
+
+    @Operation(summary = "Retourner une boutique spécifique", description = "Cette méthode permet de retourner une boutique spécifique")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "successful operation")})
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getBoutique(@PathVariable Long id) {
+        BoutiqueDTO boutiqueDTOS = new BoutiqueDTO();
+        Boutique boutique = boutiqueService.retreiveBoutiqueById(id).get();
+        boutiqueDTOS = boutiqueMapper.boutiqueToBoutiqueDto(boutique);
         return new ResponseEntity<>(boutiqueDTOS,HttpStatus.OK);
     }
 }

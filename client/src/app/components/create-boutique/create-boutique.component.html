@@ -1,0 +1,60 @@
+<h3>Créer un boutique</h3>
+<div style="width: 100%;">
+  <form [formGroup]="boutiqueForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" id="name" 
+      required formControlName="nom" 
+      minlength="2" name="name" >
+<div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+</div>
+</div>
+<div class="form-group">
+    <label  for="conge">
+      Congé</label>
+    <input  type="checkbox" name="conge"  formControlName="conge" id="conge">
+    
+</div>
+
+<table class="table " formArrayName="ouvertures">
+<thead>
+    <tr>
+      <th colspan="2">Ajouter un horaire</th>
+      <th width="150px"><button type="button" (click)="addOuverture()" class="btn btn-primary">+</button></th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let ouverture of ouvertures().controls; let i=index" [formGroupName]="i" style="display: flex;">
+        <td>
+          <label for="jour">Jour</label> 
+          <select formControlName="jour" name="jour" class="form-control">
+              <option value="2">Lundi</option>
+              <option value="3">Mardi</option>
+              <option value="4">Mercredi</option>
+              <option value="5">Jeudi</option>
+              <option value="6">Vendredi</option>
+              <option value="7">Samedi</option>
+              <option value="1">Dimanche</option>
+          </select>
+        </td>
+        <td>
+          <label for="ouverture">Ouverture</label> 
+            <input type="time" formControlName="horaireOuverture" class="form-control" step="2" >
+            
+        </td>
+        <td>
+          <label for="fermeture">Fermeture</label> 
+            <input type="time" formControlName="horaireFermeture" class="form-control" step="2" >
+        </td>
+        <td>
+            <br>
+            <button  (click)="removeOuverture(i)" class="btn btn-danger form-control ">-</button>
+        </td>
+      </tr>
+</tbody>
+    
+  </table>
+    <button type="submit" class="btn btn-success">Créer</button>
+  </form>
+</div>
