@@ -6,7 +6,9 @@ export class Boutique {
     nom : string;
     conge : boolean;
     dateCreation : Date;
-    produit : Produit[];
+    produitSet : Produit[];
     ouvertures: Ouverture[];
+    nombreProduits: number;
+    nombreCategories: number = 0;
 
 }
