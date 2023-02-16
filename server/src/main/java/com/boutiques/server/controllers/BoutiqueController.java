@@ -25,7 +25,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/boutiques")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @Tag(name = "Boutique", description = "La gestion des boutiques")
 public class BoutiqueController {
 
