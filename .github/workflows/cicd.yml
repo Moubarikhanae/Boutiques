@@ -38,7 +38,7 @@ jobs:
           maven-version: 3.8.2
 
       - name: All the Tests and Coverage check
-        run: mvn -f /home/runner/work/ProjetBoutique/server/pom.xml clean install -Dspring.profiles.active=test
+        run: mvn -f ./server/pom.xml clean install -Dspring.profiles.active=test
     
   deploy:
     runs-on: ubuntu-latest
