@@ -19,7 +19,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/categories")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @Tag(name = "Catégorie", description = "La gestion des catégories")
 public class CategorieController {
 
