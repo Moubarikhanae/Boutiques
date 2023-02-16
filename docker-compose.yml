@@ -35,6 +35,7 @@ services:
       - MYSQL_USER=hanae
       - MYSQL_PASSWORD=hanae
       - MYSQL_ROOT_PASSWORD=hanae
+      - SPRING_PROFILES_ACTIVE=docker
     ports:
       - 8080:8080 # Forward the exposed port 8081 on the container to port 8081 on the host machine
     links:

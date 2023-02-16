@@ -25,7 +25,9 @@ export class CategorieListComponent implements OnInit {
       flex: 1,
       minWidth: 150,
       filter: true,
+      resizable: true,
     };
+    
   ngOnInit(): void {
    this.reloadData();
   }
@@ -44,7 +46,7 @@ export class CategorieListComponent implements OnInit {
   }
 
   columnDefs: ColDef[] = [
-    { field: 'nom' },
+    { field: 'nom', sortable: true },
     {
       field: 'Actions',
       cellRenderer: ButtonCellRendererComponent,

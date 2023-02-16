@@ -6,6 +6,7 @@ import com.boutiques.server.entities.Produit;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,10 @@ public class BoutiqueDTO {
     @Getter
     @Setter
     private boolean conge;
+
+    @Getter
+    @Setter
+    private Date dateCreation;
 
     @Getter
     @Setter
