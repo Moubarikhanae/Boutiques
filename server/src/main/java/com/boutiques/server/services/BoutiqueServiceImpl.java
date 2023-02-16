@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -120,5 +121,10 @@ public class BoutiqueServiceImpl implements IBoutiqueService {
     @Override
     public List<Boutique> retreiveBoutique() {
         return boutiqueRepository.findAll();
+    }
+
+    @Override
+    public Optional<Boutique> retreiveBoutiqueById(Long id) {
+        return boutiqueRepository.findBoutiqueById(id);
     }
 }
