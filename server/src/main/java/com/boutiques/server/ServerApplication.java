@@ -43,6 +43,8 @@ public class ServerApplication {
 			if(categorieRepository.findAll().size()==0
 			&& produitRepository.findAll().size()==0
 			&& boutiqueRepository.findAll().size()==0) {
+				int min = 1;
+				int max = 7;
 				int count = 1;
 				for (int i=1 ; i<=10 ; i++) {
 					Categorie categorie = new Categorie();
@@ -50,7 +52,6 @@ public class ServerApplication {
 					categorieRepository.save(categorie);
 				}
 				for (int i=1 ; i<=10 ; i++) {
-
 					Boutique boutique = new Boutique();
 					boutique.setNom("Boutique"+i);
 					boutique.setDateCreation(Date.valueOf(LocalDate.now()));
@@ -58,7 +59,7 @@ public class ServerApplication {
 					for(int j=1; j<=5;j++) {
 						for(int k=1;k<=2;k++) {
 							Ouverture ouverture = new Ouverture();
-							ouverture.setJour(i);
+							ouverture.setJour((int)Math.floor(Math.random() * (max - min + 1) + min));
 							ouverture.setHoraireOuverture(Time.valueOf("08:00:00"));
 							ouverture.setHoraireFermeture(Time.valueOf("12:00:00"));
 							ouvertures.add(ouverture);
@@ -76,7 +77,7 @@ public class ServerApplication {
 						Produit produit = new Produit();
 						produit.setNom("Produit"+ count);
 						count++;
-						produit.setDescription("Description produit"+z);
+						produit.setDescription("Description produit "+z);
 						produit.setPrix(10);
 						produit.setQuantite(10L);
 						Categorie categorie = new Categorie();

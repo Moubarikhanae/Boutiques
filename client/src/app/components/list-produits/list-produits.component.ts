@@ -23,6 +23,7 @@ export class ListProduitsComponent implements OnInit {
       flex: 1,
       minWidth: 150,
       filter: true,
+      resizable: true,
     };
   ngOnInit(): void {
    this.reloadData();
@@ -43,10 +44,10 @@ export class ListProduitsComponent implements OnInit {
 
  
   columnDefs: ColDef[] = [
-    { field: 'nom',
+    { field: 'nom', sortable: true,
     resizable: true
     },
-    { field: 'description',
+    { field: 'description', sortable: true,
     resizable: true 
     },
     /*{ field: 'prix',
