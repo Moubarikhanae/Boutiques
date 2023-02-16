@@ -67,13 +67,23 @@ export class ListBoutiqueComponent implements OnInit {
       field: 'Actions',
       cellRenderer: ButtonCellRendererComponent,
       cellRendererParams: {
-       // clicked: (params: any) => this.deleteCategorie(params),
+      clicked: (params: any) => this.deleteBoutique(params),
        //  onUpdate: (params: any) => this.updateCategorie(params),
        // onDetails: (params: any) => this.datailsCategorie(params)
 
       },
     }
 ];
+
+deleteBoutique(params: any){
+  this.boutiqueService.deleteBoutique(params)
+  .subscribe(
+    (data: any) => {
+      this.reloadData();
+    },
+    (error: any) => console.log(error));
+    }
+
 }
 
 const dateComparator = (filterLocalDateAtMidnight: Date, cellValue: any): number => {
