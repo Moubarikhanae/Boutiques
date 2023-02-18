@@ -77,7 +77,7 @@ export class ListBoutiqueComponent implements OnInit {
       cellRendererParams: {
       clicked: (params: any) => this.deleteBoutique(params),
       onUpdate: (params: any) => this.updateBoutique(params),
-       // onDetails: (params: any) => this.datailsCategorie(params)
+      onDetails: (params: any) => this.detailsBoutique(params)
 
       },
     }
@@ -99,7 +99,9 @@ deleteBoutique(params: any){
     addProduitToBoutique(params: any) {
       this.router.navigate(['create-produit', params]);
     }
-  
+    detailsBoutique(params: any) {
+      this.router.navigate(['details-boutique', params]);
+    }
 
 }
 

@@ -6,6 +6,7 @@ import { CategorieUpdateComponent } from './components/categorie-update/categori
 import { CreateBoutiqueComponent } from './components/create-boutique/create-boutique.component';
 import { CreateCategorieComponent } from './components/create-categorie/create-categorie.component';
 import { CreateProduitComponent } from './components/create-produit/create-produit.component';
+import { DetailsBoutiqueComponent } from './components/details-boutique/details-boutique.component';
 import { ListBoutiqueComponent } from './components/list-boutique/list-boutique.component';
 import { ListProduitsComponent } from './components/list-produits/list-produits.component';
 import { ProduitDetailsComponent } from './components/produit-details/produit-details.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'create-boutique', component: CreateBoutiqueComponent },
   { path: 'list-boutiques', component: ListBoutiqueComponent },
   { path: 'update-boutique/:id', component: UpdateBoutiqueComponent },
+  { path: 'details-boutique/:id', component: DetailsBoutiqueComponent },
 ];
 
 @NgModule({

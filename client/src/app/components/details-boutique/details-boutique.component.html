@@ -1,0 +1,62 @@
+<h2>Détails des boutiques</h2> 
+
+<hr/>
+<div *ngIf="boutique">
+  <div>
+    <label><b>Nom: </b></label> {{boutique.nom}}
+  </div>
+  <div>
+    <label><b>Date de création: </b></label> {{boutique.dateCreation | date: 'dd/MM/yyyy'}}
+  </div>
+  <div>
+    <label><b>Congé: </b></label> {{boutique.conge ? 'En congé' : 'En service' }}
+  </div>  
+  <div class="row">
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Produits : Total = {{boutique.produitSet.length}}
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let produit of boutique.produitSet">{{produit.nom}}</li>
+        </ul>
+      </div>  
+      &nbsp;  &nbsp;
+      <div class="card" style="width: 70%;">
+        <div class="card-header">
+          Horaires 
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let horaire of boutique.ouvertures">
+            <div *ngIf="horaire.jour === 1">
+                Jour :  Dimanche - horaire d'ouverture : {{horaire.horaireOuverture}} - horaire de fermeture : {{horaire.horaireFermeture}}
+                
+                   </div>
+                   <div *ngIf="horaire.jour === 2">
+                    Jour :  Lundi - horaire d'ouverture : {{horaire.horaireOuverture}} - horaire de fermeture : {{horaire.horaireFermeture}}
+                   </div>
+                   <div *ngIf="horaire.jour === 3">
+                    Jour :  Mardi - horaire d'ouverture : {{horaire.horaireOuverture}} - horaire de fermeture : {{horaire.horaireFermeture}}
+                   </div>
+                   <div *ngIf="horaire.jour === 4">
+                    Jour :  Mercredi - horaire d'ouverture : {{horaire.horaireOuverture}} - horaire de fermeture : {{horaire.horaireFermeture}}
+                   </div>
+                   <div *ngIf="horaire.jour === 5">
+                    Jour : Jeudi - horaire d'ouverture : {{horaire.horaireOuverture}} - horaire de fermeture : {{horaire.horaireFermeture}}
+                   </div>
+                   <div *ngIf="horaire.jour === 6">
+                    Jour : Vendredi - horaire d'ouverture : {{horaire.horaireOuverture}} - horaire de fermeture : {{horaire.horaireFermeture}}
+                   </div>
+                   <div *ngIf="horaire.jour === 7">
+                    Jour : Samedi - horaire d'ouverture : {{horaire.horaireOuverture}} - horaire de fermeture : {{horaire.horaireFermeture}}
+                   </div> 
+                    
+                </li>
+        </ul>
+      </div>  
+  </div>
+  
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Retourner vers la liste des boutiques</button><br>
