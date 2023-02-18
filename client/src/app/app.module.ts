@@ -18,6 +18,7 @@ import { UpdateProduitComponent } from './components/update-produit/update-produ
 import { CreateBoutiqueComponent } from './components/create-boutique/create-boutique.component';
 import { ListBoutiqueComponent } from './components/list-boutique/list-boutique.component';
 import { UpdateBoutiqueComponent } from './components/update-boutique/update-boutique.component';
+import { ButtonCellRendrerProduitComponent } from './components/button-cell-rendrer-produit/button-cell-rendrer-produit.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UpdateBoutiqueComponent } from './components/update-boutique/update-bou
     UpdateProduitComponent,
     CreateBoutiqueComponent,
     ListBoutiqueComponent,
-    UpdateBoutiqueComponent
+    UpdateBoutiqueComponent,
+    ButtonCellRendrerProduitComponent
   ],
   imports: [
     BrowserModule,
