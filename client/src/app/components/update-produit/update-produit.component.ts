@@ -43,9 +43,7 @@ export class UpdateProduitComponent implements OnInit {
     );
 
     this.categories.forEach(x=>{
-      console.log("ici")
-      if (this.produit.categorieSet.indexOf(x)>=0) {
-        
+      if (this.produit.categorieSet.indexOf(x)>=0) {        
       x.selectionne = true;
     }});
   }
