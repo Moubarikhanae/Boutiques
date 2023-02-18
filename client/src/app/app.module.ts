@@ -17,6 +17,7 @@ import { ProduitDetailsComponent } from './components/produit-details/produit-de
 import { UpdateProduitComponent } from './components/update-produit/update-produit.component';
 import { CreateBoutiqueComponent } from './components/create-boutique/create-boutique.component';
 import { ListBoutiqueComponent } from './components/list-boutique/list-boutique.component';
+import { UpdateBoutiqueComponent } from './components/update-boutique/update-boutique.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ListBoutiqueComponent } from './components/list-boutique/list-boutique.
     ProduitDetailsComponent,
     UpdateProduitComponent,
     CreateBoutiqueComponent,
-    ListBoutiqueComponent
+    ListBoutiqueComponent,
+    UpdateBoutiqueComponent
   ],
   imports: [
     BrowserModule,
