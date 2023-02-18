@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Boutique } from 'src/app/models/boutique';
 import { BoutiqueServiceService } from 'src/app/services/boutiqueService/boutique-service.service';
 import { ButtonCellRendererComponent } from '../button-cell-renderer/button-cell-renderer.component';
+import { ButtonCellRendrerProduitComponent } from '../button-cell-rendrer-produit/button-cell-rendrer-produit.component';
 
 @Component({
   selector: 'app-list-boutique',
@@ -64,12 +65,19 @@ export class ListBoutiqueComponent implements OnInit {
       sortable: true,
     },
     {
+      field: 'Affecter un produit',
+      sortable: true,
+      cellRenderer: ButtonCellRendrerProduitComponent,
+      cellRendererParams: {
+      clicked: (params: any) => this.addProduitToBoutique(params),
+    }},
+    {
       field: 'Actions',
       cellRenderer: ButtonCellRendererComponent,
       cellRendererParams: {
       clicked: (params: any) => this.deleteBoutique(params),
       onUpdate: (params: any) => this.updateBoutique(params),
-       // onDetails: (params: any) => this.datailsCategorie(params)
+      onDetails: (params: any) => this.detailsBoutique(params)
 
       },
     }
@@ -87,7 +95,13 @@ deleteBoutique(params: any){
     updateBoutique(params: any) {
       this.router.navigate(['update-boutique', params]);
     }
-  
+
+    addProduitToBoutique(params: any) {
+      this.router.navigate(['create-produit', params]);
+    }
+    detailsBoutique(params: any) {
+      this.router.navigate(['details-boutique', params]);
+    }
 
 }
 
