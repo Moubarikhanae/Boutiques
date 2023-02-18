@@ -1,22 +1,38 @@
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <!-- Links -->
-    <ul class="navbar-nav">
+  <a href="#" class="navbar-brand">Gestion des boutiques</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
-          <a routerLink="employees" class="nav-link" routerLinkActive="active">Employee List</a>
+        <a href="/home" class="nav-link" routerLink="home">Accueil </a>
       </li>
-      <li class="nav-item">
-          <a routerLink="add" class="nav-link" routerLinkActive="active">Add Employee</a>
+      <li class="nav-item dropdown" >
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Catégories</a>
+        <div class="dropdown-menu">
+           <a href="/categories-list" class="dropdown-item" routerLink="categories-list">Lister les catégories</a>
+           <a href="/create-categorie" class="dropdown-item" routerLink="create-categorie">Ajouter une catégorie</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" >
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Produits</a>
+        <div class="dropdown-menu">
+           <a href="/produits-list" class="dropdown-item" routerLink="produits-list">Lister les produits</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" >
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Boutiques</a>
+        <div class="dropdown-menu">
+           <a href="/list-boutiques" class="dropdown-item" routerLink="list-boutiques">Lister les boutiques</a>
+           <a href="/create-boutique" class="dropdown-item" routerLink="create-boutique">Ajouter une boutique</a>
+        </div>
       </li>
     </ul>
-  </nav>
-  <div class="container">
-    <br>
-    <h2 style="text-align: center;">Shop</h2>
-    <hr>  
-    <div class="card">
-      <div class="card-body">
-    <router-outlet></router-outlet>
-      </div>
+</nav>
+<div class="container">
+  <br>
+  <h2 style="text-align: center;">Shop</h2>
+  <hr>  
+  <div class="card">
+    <div class="card-body">
+  <router-outlet></router-outlet>
     </div>
   </div>
-  
+</div>
