@@ -68,7 +68,7 @@ export class ListBoutiqueComponent implements OnInit {
       cellRenderer: ButtonCellRendererComponent,
       cellRendererParams: {
       clicked: (params: any) => this.deleteBoutique(params),
-       //  onUpdate: (params: any) => this.updateCategorie(params),
+      onUpdate: (params: any) => this.updateBoutique(params),
        // onDetails: (params: any) => this.datailsCategorie(params)
 
       },
@@ -83,6 +83,11 @@ deleteBoutique(params: any){
     },
     (error: any) => console.log(error));
     }
+
+    updateBoutique(params: any) {
+      this.router.navigate(['update-boutique', params]);
+    }
+  
 
 }
 

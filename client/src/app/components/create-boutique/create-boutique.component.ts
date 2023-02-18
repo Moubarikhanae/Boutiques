@@ -57,7 +57,7 @@ export class CreateBoutiqueComponent implements OnInit {
       this.gotoList();
     }, 
     error => {
-     this.errorMessage = error.error.message;
+     this.errorMessage = error.nom;
       console.log(error)
     });
   }
@@ -69,6 +69,6 @@ export class CreateBoutiqueComponent implements OnInit {
 
   
   gotoList() {
-    this.router.navigate(['/produits-list']);
+    this.router.navigate(['/list-boutiques']);
   }
 }
